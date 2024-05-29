@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    char name[100];
+
+    printf("Please enter your name: ");
+
+    if (fgets(name, sizeof(name), stdin) != NULL) {
+
+        size_t length = strlen(name);
+        if (length > 0 && name[length - 1] == '\n') {
+            name[length - 1] = '\0';
+        }
+        
+        printf("Your name is: %s\n", name);
+    } else {
+        printf("Error reading input.\n");
+    }
+
+    return 0;
+}
