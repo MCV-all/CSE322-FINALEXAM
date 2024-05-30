@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void printFibonacci(int n) {
+    unsigned long long first = 0, second = 1, next;
+
+    printf("Fibonacci Series: ");
+    for (int i = 1; i <= n; i++) {
+        if (i == 1) {
+            printf("%llu", first);
+        } else if (i == 2) {
+            printf(", %llu", second);
+        } else {
+            next = first + second;
+            first = second;
+            second = next;
+            printf(", %llu", next);
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of terms: ");
+    if (scanf("%d", &n) != 1 || n <= 0) {
+        printf("Invalid input. Please enter a positive integer.\n");
+        return 1; 
+    }
+
+    printFibonacci(n);
+
+    return 0;
+}
