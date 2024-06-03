@@ -1,0 +1,40 @@
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int binaryToDecimal(const char *binary) {
+    int decimal = 0;
+    int length = strlen(binary);
+    
+    for (int i = 0; i < length; i++) {
+        if (binary[i] == '1') {
+            decimal += pow(2, length - 1 - i);
+        } else if (binary[i] != '0') {
+            return -1; 
+        }
+    }
+    
+    return decimal;
+}
+
+int main() {
+    char binary[65];
+
+    printf("Enter a binary number: ");
+    if (scanf("%64s", binary) != 1) {
+        printf("Invalid input. Please enter a binary number.\n");
+        return 1; 
+    }
+
+    int decimal = binaryToDecimal(binary);
+    
+    if (decimal == -1) {
+        printf("Invalid input. Please enter a binary number.\n");
+        return 1;
+    }
+
+    printf("The decimal equivalent of binary number %s is: %d\n", binary, decimal);
+
+    return 0;
+}
