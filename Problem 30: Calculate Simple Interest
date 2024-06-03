@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+double simpleInterest(double principal, double rate, int time) {
+
+    double interest = (principal * rate * time) / 100;
+    return interest;
+}
+
+int main() {
+    double principal, rate;
+    int time;
+
+    printf("Enter the principal amount: ");
+    scanf("%lf", &principal);
+
+    printf("Enter the annual interest rate (in decimal): ");
+    scanf("%lf", &rate);
+
+    printf("Enter the time period (in years): ");
+    scanf("%d", &time);
+
+    double interest = simpleInterest(principal, rate, time);
+
+    printf("Simple interest after %d years: %.2lf\n", time, interest);
+
+    return 0;
+}
