@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+void decimalToBinary(int decimal, char *binary) {
+    int index = 0;
+
+    if (decimal == 0) {
+        binary[index++] = '0';
+        binary[index] = '\0';
+        return;
+    }
+
+    while (decimal > 0) {
+        binary[index++] = (decimal % 2) ? '1' : '0';
+        decimal /= 2;
+    }
+    binary[index] = '\0';
+
+    int start = 0;
+    int end = index - 1;
+    while (start < end) {
+        char temp = binary[start];
+        binary[start] = binary[end];
+        binary[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+int main() {
+    int decimal;
+    char binary[65];
+
+    printf("Enter a decimal number: ");
+    if (scanf("%d", &decimal) != 1) {
+        printf("Invalid input. Please enter an integer.\n");
+        return 1;
+    }
+
+    decimalToBinary(decimal, binary);
+
+    printf("The binary equivalent of decimal number %d is: %s\n", decimal, binary);
+
+    return 0;
+}
+
